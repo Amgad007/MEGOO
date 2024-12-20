@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Scaner </title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        body {
+    font-family: "Agu Display", serif;
+    background-image: url("https://marketplace.canva.com/EAGFfNA0FhU/1/0/1131w/canva-blue-geometric-background-poster-zAUnN1NLViw.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed; /* تثبيت الخلفية */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.Logo1 {
+    position: absolute;
+    top: -105px; /* تحسين موضع الشعار العلوي */
+    left: 60px; /* تثبيت المسافة من اليسار */
+    width: 15vw;  /* تم تكبير الحجم قليلاً */
+    max-width: 100%;
+}
+
+.Logo2 {
+    position: absolute;
+    top: 20px; /* تثبيت المسافة من الأعلى */
+    right: 60px; /* تثبيت المسافة من اليمين */
+    width: 15vw;  /* تم تكبير الحجم قليلاً */
+    max-width: 100%;
+}
+
+
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 90%;
+    margin: 100px auto 20px auto;
+    background-image: url("https://img.freepik.com/free-vector/grunge-watercolor-background-using-pastel-colours_1048-6530.jpg");
+    background-size: cover;
+    text-align: center;
+}
+
+form label {
+    font-size: 1em;
+    color: rgb(85, 6, 6);
+    text-align: left;
+    margin-bottom: 5px;
+    display: block;
+}
+
+form h1 {
+    text-align: center;
+    color: #aa841e;
+    border-style: groove;
+    border-radius: 10px;
+    font-style: italic;
+    padding: 10px;
+    font-size: 1.5em;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid gold;
+    border-radius: 7px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4A90E2;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #357ABD;
+}
+
+#qrcode {
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #888;
+    text-align: center;
+}
+
+/* Media Queries */
+@media (min-width: 1024px) {
+    form {
+        max-width: 600px;
+        padding: 40px;
+        margin-top: 70px;
+    }
+
+    form h1 {
+        font-size: 2em;
+    }
+
+    input {
+        font-size: 1.2em;
+    }
+
+    button {
+        font-size: 1.1em;
+        padding: 12px 24px;
+    }
+
+    .Logo1,
+    .Logo2 {
+        width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .Logo1 {
+        position: absolute;
+        top: -60px;  /* تنزيل اللوجو الأول */
+        left: 10px;  /* لجعل اللوجو الأول على اليسار */
+        width: 130px;  /* تعديل الحجم للشاشة الصغيرة */
+    }
+
+    .Logo2 {
+        position: absolute;
+        top: 2px;  /* تثبيت اللوجو الثاني من الأعلى */
+        right: 10px;  /* لجعل اللوجو الثاني على اليمين */
+        width: 130px;  /* تعديل الحجم للشاشة الصغيرة */
+    }
+}
+    form {
+        width: 95%;
+        padding: 20px;
+    }
+
+    button {
+        font-size: 0.9em;
+    }
+
+
+@media (max-width: 480px) {
+    .Logo1,
+    .Logo2 {
+        width: 100px;
+    }
+
+    form {
+        padding: 15px;
+    }
+
+    input {
+        font-size: 0.9em;
+    }
+
+    button {
+        font-size: 0.8em;
+        padding: 8px 16px;
+    }
+
+    form h1 {
+        font-size: 1.2em;
+        padding: 8px;
+    }
+
+    .footer {
+        font-size: 0.8em;
+    }
+}
+
+        .name {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-family: 'Cursive', sans-serif;
+            font-size: 2.5em;
+            color: #000;
+            font-weight: bold;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            color: #4A90E2;
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        input[type="file"], button {
+            padding: 10px;
+            margin: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        button {
+            background-color: #4A90E2;
+            color: #fff;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #357ABD;
+        }
+
+        pre {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 4px;
+            width: 80%;
+            overflow-x: auto;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px 0;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #888;
+        }
+
+        .camera-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+
+        #reader {
+            width: 100%;
+            height: auto;
+        }
+
+        /* New CSS for Image and Error Display */
+        .image-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .image-container img {
+            max-width: 100px;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        #errorOutput {
+            margin-top: 10px;
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 5px;
+            width: 50%;
+            word-wrap: break-word;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em;
+            }
+            .name {
+                font-size: 2em;
+            }
+            .footer {
+                font-size: 12px;
+            }
+            #errorOutput {
+                width: 80%;
+            }
+        }
+        @media (max-width: 400px) {
+            input[type="file"], button {
+                font-size: 14px;
+            }
+            .image-container img {
+                max-width: 80px;
+            }
+        }
+        .name {
+    position: relative; /* تعديل التمركز لجعل المسافات تعمل بشكل صحيح */
+    display: block; /* لضمان أن كل عنصر يظهر في سطر منفصل */
+    margin-bottom: 20px; /* إضافة مسافة أسفل كل عنصر */
+    font-family: 'Cursive', sans-serif;
+    font-size: 2.5em;
+    color: #000;
+    font-weight: bold;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+
+    </style>
+    <!-- تحميل مكتبة html5-qrcode من رابط بديل -->
+    <script src="https://cdn.jsdelivr.net/npm/html5-qrcode/minified/html5-qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.min.js"></script>
+    
+</head>
+<body>
+    <img src="Logo1.png" alt="Logo" class="Logo1">
+    <img src="Logo2.png" alt="Logo" class="Logo2">
+
+    <h1>QR Scanner</h1>
+    
+    <!-- File input for uploading images -->
+    <input type="file" id="fileInput" accept="image/*,application/pdf" multiple>
+    <button onclick="generateExcel()">Generate Excel File</button>
+    <button id="openCameraButton" onclick="openCamera()">Open Camera</button>
+
+    <!-- Display camera stream -->
+    <div id="cameraContainer" class="camera-container">
+        <div id="reader" style="width: 100%; height: auto; aspect-ratio: 4 / 3; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"></div>
+        <div style="margin-top: 10px; display: flex; gap: 10px; justify-content: center;">
+            <button onclick="closeCamera()">Close Camera</button>
+        </div>
+    </div>
+    
+    <!-- New Image Display Section -->
+    <h2>Uploaded Images:</h2>
+    <div id="imageContainer" class="image-container">
+        <!-- Images will appear here -->
+    </div>
+
+    <!-- Errors Output -->
+    <h2>Errors:</h2>
+    <pre id="errorOutput">No errors yet...</pre>
+
+    <!-- Display Decoded QR Data -->
+    <h2>Decoded Data:</h2>
+    <pre id="output">No data to display yet...</pre>
+
+    <div class="footer">,Developed By
+        <a target="_blank" href="https://www.facebook.com/profile.php?id=100027952532592&mibextid=ZbWKwL"> 𝓐𝓜𝓖𝓐𝓓🖤</a>
+        <a target="_blank" href="https://www.facebook.com/profile.php?id=100011880684434&mibextid=ZbWKwL"> 𝒪𝒮𝒜ℳ𝒜🤍</a>
+        All Copy Rights Reserved @2024</div>
+
+    <script>
+        let html5QrCode = null;
+        const cameraContainer = document.getElementById('cameraContainer');
+        const outputElement = document.getElementById('output');
+        const errorOutputElement = document.getElementById('errorOutput');
+        const imageContainerElement = document.getElementById('imageContainer');
+        const uploadedImageElement = document.getElementById('uploadedImage');
+        let qrData = [];
+
+        // Check if camera is supported and request HTTPS
+        if (location.protocol !== 'https:') {
+            alert("This site is not secure. Camera access may not work. Please use HTTPS.");
+        }
+
+        async function openCamera() {
+        // تأكد من دعم الكاميرا
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+            alert("Camera not supported on this browser.");
+            console.error("Camera not supported.");
+            return;
+        }
+
+        try {
+            // طلب الوصول للكاميرا
+            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+
+            // عرض واجهة الكاميرا
+            cameraContainer.style.display = 'block';
+
+            // تشغيل مكتبة HTML5-QRCODE إذا لم تكن مفعلة بالفعل
+            if (!html5QrCode) {
+                html5QrCode = new Html5Qrcode("reader");
+            }
+
+            // بدء قراءة QR
+            html5QrCode.start(
+                { facingMode: "environment" }, // استخدام الكاميرا الخلفية
+                { fps: 10, qrbox: 250 }, // إعدادات الأداء
+                decodedText => {
+                    if (!qrData.includes(decodedText)) {
+                        qrData.push(decodedText);
+                        outputElement.textContent = qrData.join("\n");
+                    }
+                },
+                errorMessage => {
+                    console.warn("Scanning error:", errorMessage);
+                }
+            ).catch(err => {
+                console.error("Failed to start camera:", err);
+            });
+        } catch (err) {
+            // إدارة أخطاء الكاميرا
+            if (err.name === 'NotAllowedError') {
+                alert("Camera access was denied. Please allow permissions in browser settings.");
+            } else if (err.name === 'NotFoundError') {
+                alert("No camera found. Please connect a camera.");
+            } else {
+                alert("Error accessing camera: " + err.message);
+            }
+            console.error("Camera permission error:", err);
+        }
+    }
+
+    // استدعاء فتح الكاميرا عند تحميل الصفحة
+    // document.addEventListener('DOMContentLoaded', () => {
+    //     openCamera();
+    // });
+
+        function closeCamera() {
+            if (html5QrCode) {
+                html5QrCode.stop().then(() => {
+                    html5QrCode = null;
+                    cameraContainer.style.display = 'none';
+                }).catch(err => {
+                    console.error("Failed to stop camera:", err);
+                });
+            }
+        }
+
+        function processUploadedFile(event) {
+            const files = event.target.files;
+            if (files.length === 0) {
+                displayError("No file selected.");
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function () {
+                const img = new Image();
+                img.src = reader.result;
+                
+                // Display the uploaded image as thumbnail
+                const imgElement = document.createElement('img');
+                imgElement.src = img.src;
+                imageContainerElement.appendChild(imgElement);
+
+                img.onload = function () {
+                    const canvas = document.createElement("canvas");
+                    const context = canvas.getContext("2d");
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    context.drawImage(img, 0, 0, img.width, img.height);
+
+                    const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+                    const qrCode = jsQR(imageData.data, imageData.width, imageData.height);
+                    if (qrCode) {
+                        if (!qrData.includes(qrCode.data)) {
+                            qrData.push(qrCode.data);
+                            outputElement.textContent = qrData.join("\n");
+                        }
+                    } else {
+                        displayError("No QR code found in this image.");
+                    }
+                };
+            };
+
+            reader.readAsDataURL(files[0]);
+        }
+
+        function displayError(message) {
+            const errorElement = document.createElement('div');
+            errorElement.textContent = message;
+            errorOutputElement.appendChild(errorElement);
+        }
+
+        function generateExcel() {
+    if (qrData.length > 0) {
+        const columns = new Set(); // مجموعة لحفظ أسماء الأعمدة بشكل فريد
+        const rows = []; // مصفوفة للصفوف
+
+        qrData.forEach(item => {
+            const rowData = {};
+            const parts = item.split(","); // تقسيم النص باستخدام الفاصلة
+            parts.forEach(part => {
+                const [key, value] = part.split(":").map(x => x.trim()); // استخراج المفتاح والقيمة
+                if (key && value) {
+                    columns.add(key); // إضافة المفتاح كاسم عمود
+                    rowData[key] = value; // حفظ القيمة مع اسم العمود
+                }
+            });
+
+            // إضافة الوقت الحالي بتنسيق 12 ساعة مع AM/PM
+            const timestamp = new Date().toLocaleString('en-US', { 
+                hour12: true, 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit', 
+                month: 'short', 
+                day: 'numeric', 
+                year: 'numeric' 
+            });
+            rowData["Timestamp"] = timestamp; // إضافة الوقت في عمود جديد
+
+            rows.push(rowData); // إضافة الصف
+        });
+
+        // تحويل مجموعة الأعمدة إلى مصفوفة مرتبة
+        const columnArray = Array.from(columns);
+        columnArray.push("Timestamp"); // إضافة عمود الوقت
+
+        const sheetData = [columnArray]; // الصف الأول يحتوي على أسماء الأعمدة
+
+        // بناء الصفوف مع التأكد من ترتيب القيم حسب الأعمدة
+        rows.forEach(row => {
+            const rowArray = columnArray.map(col => row[col] || "N/A"); // إضافة القيم أو N/A إذا لم توجد قيمة
+            sheetData.push(rowArray);
+        });
+
+        // إنشاء ملف Excel
+        const ws = XLSX.utils.aoa_to_sheet(sheetData);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "QR Data");
+        XLSX.writeFile(wb, "qr_codes.xlsx");
+    } else {
+        displayError("No QR data available to export.");
+    }
+}
+
+
+
+
+        // Attach file input event listener
+        document.getElementById('fileInput').addEventListener('change', processUploadedFile);
+    </script>
+</body>
+</html>
+ 
